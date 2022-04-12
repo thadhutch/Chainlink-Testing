@@ -9,7 +9,7 @@ import '@chainlink/contracts/src/v0.8/VRFConsumerBaseV2.sol';
  * of a 20 sided dice
  * @dev This is only an example implementation and not necessarily suitable for mainnet.
  */
-contract VRFD20 is VRFConsumerBaseV2 {
+contract RandomNumberConsumer is VRFConsumerBaseV2 {
     uint256 private constant ROLL_IN_PROGRESS = 42;
 
     VRFCoordinatorV2Interface COORDINATOR;
@@ -39,7 +39,7 @@ contract VRFD20 is VRFConsumerBaseV2 {
 
     // For this example, retrieve 1 random value in one request.
     // Cannot exceed VRFCoordinatorV2.MAX_NUM_WORDS.
-    uint32 numWords = 1;
+    uint32 numWords = 1; // This specifies how many random values we will recieve
     address s_owner;
 
     // map rollers to requestIds
@@ -53,7 +53,8 @@ contract VRFD20 is VRFConsumerBaseV2 {
     /**
      * @notice Constructor inherits VRFConsumerBaseV2
      *
-     * @dev NETWORK: RINKEBY
+     * @dev NETWORK: Rinkeby
+     *
      *
      * @param subscriptionId subscription id that this consumer contract can use
      */
